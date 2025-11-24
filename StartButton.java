@@ -18,7 +18,7 @@ public class StartButton extends Actor
     {
         image.scale(200,50);
         setImage(image);
-         if (Greenfoot.mouseClicked(this)) {
+        if (Greenfoot.mouseClicked(this)) {
             Greenfoot.setWorld(new LevelOne());
         }
     }
