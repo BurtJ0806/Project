@@ -16,5 +16,6 @@ public class LevelOne extends World
 
         progress = new ProgressBar(400, 20, 100);
         addObject(progress, getWidth()/2, getHeight() - 20);
+        addObject(new Clipboard(), -250, 200);
     }
 }
