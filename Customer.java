@@ -1,11 +1,11 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;  
 
 public class Customer extends Actor
 {
     private int waitingX;       // The X-coordinate where the customer will stop
     private int slideSpeed = 2; // How many pixels to move per act cycle
     
-    // The customer can be in one of three "states"
+    
     private String state = "SLIDING_IN"; // "SLIDING_IN", "WAITING", "SLIDING_OUT"
 
     /**
@@ -21,8 +21,7 @@ public class Customer extends Actor
         // 1. Manually load your image
         GreenfootImage img = new GreenfootImage("Customer.png");
         
-        // 2. Set the new width you want (e.g., 60 pixels)
-        int newWidth = 60;
+        int newWidth = 80;
         
         // 3. Automatically calculate the height to keep the shape
         int originalWidth = img.getWidth();
@@ -32,7 +31,6 @@ public class Customer extends Actor
         // 4. Scale the image to the new, smaller size
         img.scale(newWidth, newHeight); 
         
-        // 5. Set the new, smaller image as this actor's image
         setImage(img); 
     }
 
@@ -104,7 +102,7 @@ public class Customer extends Actor
      */
     private void slideOut()
     {
-        // Slide off to the right side of the world
+        
         int endX = getWorld().getWidth() + 100; // 100 pixels off-screen
         
         if (getX() < endX)
@@ -113,7 +111,7 @@ public class Customer extends Actor
             setLocation(getX() + slideSpeed, getY());
         }
         else
-     // We are fully off-screen. Remove this customer from the world.
+     
             getWorld().removeObject(this);
         }
     

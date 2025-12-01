@@ -15,23 +15,22 @@ public class LevelOne extends World
     public LevelOne()
     {
         super(600, 400, 1);
+        setBackground("JobBackground.png");
 
         progress = new ProgressBar(400, 20, 100);
         addObject(progress, getWidth()/2, getHeight() - 20);
         
         // 1. Create an array of Strings for your tutorial dialogue
         String[] tutorialLines = {
-            "Hello! Welcome to your first day on the job.",//index one
-            "You will be in charge of handling the customers.",//index two
-            "Let's get this started.",
-            "Good luck!"
+            "Tutorial: 'Welcome to your first day on the job.'",//index one
+            "Tutorial: 'You will be in charge of handling the customers.'",//index two
+            "Tutorial: 'Let's get this started.'",
+            "Tutorial: 'Here's your first customer approaching...'"
         };
 
         
         tutorialBox = new CustomerDialogue1(tutorialLines);
-
-        //adds dialogue box to the world
-        addObject(tutorialBox,getWidth()/2,getHeight()-50); 
+        addObject(tutorialBox, getWidth()/2, getHeight()-50);    
         
         
     }

@@ -13,10 +13,7 @@ public class CustomerDialogue1 extends Actor
     private String[] dialogue;
     private int index;
 
-    /**
-     * This is the Constructor. It runs when you first create the object.
-     * I've renamed it from 'Dialogue' to 'CustomerDialogue1' to match your class name.
-     */
+    //This is the Constructor
     public CustomerDialogue1(String[] dialogue)
     {
         this.dialogue = dialogue;
