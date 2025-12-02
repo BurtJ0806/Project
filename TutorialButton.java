@@ -19,7 +19,12 @@ public class TutorialButton extends Actor
         image.scale(150,50);
         setImage(image);
          if (Greenfoot.mouseClicked(this)) {
-            System.out.println("Button clicked!");
+            // Create a new instance of the TutorialMenu
+            TutorialMenu tutorialWorld = new TutorialMenu();
+            
+            // Switch the current world to the new TutorialMenu
+            Greenfoot.setWorld(tutorialWorld);
+            
         }
     }
 }
