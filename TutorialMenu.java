@@ -13,6 +13,8 @@ public class TutorialMenu extends World
     public TutorialMenu(){
         super(600, 400, 1);
         addObject(new MenuBackground(), 300, 200); // Burger BackRound
+        
+       addObject(new BackButtonTut(), 40, 30);
 
 
         addObject(new Title(), 300, 60); // Corprate Climber Title
