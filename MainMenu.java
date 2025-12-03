@@ -21,6 +21,8 @@ public class MainMenu extends World
         addObject(new StartButton(), 300, 200);
         addObject(new TutorialButton(), 300, 270);
         addObject(new ClockOut(), 300, 340);
-        
+        GreenfootSound mainMusic = new GreenfootSound("MainMusic.wav");
+        mainMusic.play();
+        mainMusic.playLoop();
     }
 }
