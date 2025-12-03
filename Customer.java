@@ -86,8 +86,7 @@ public class Customer extends Actor
             // 2. Create a new dialogue object for the bubble
             CustomerDialogue1 speechBubble = new CustomerDialogue1(bubbleText);
 
-            // 3. Calculate position: above and to the right of the customer
-            //    (getX(), getY()) is the customer's center.
+ 
             int bubbleX = getX() + 40; // To the right
             int bubbleY = getY() - 120; // "Above" the customer's head
 
