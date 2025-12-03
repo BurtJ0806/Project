@@ -42,7 +42,7 @@ public class LevelOne extends World
         };
 
         tutorialBox = new CustomerDialogue1(tutorialLines);
-        addObject(tutorialBox, getWidth()/2, 100);
+        addObject(tutorialBox, getWidth()/2, 350);
 
 
     }
