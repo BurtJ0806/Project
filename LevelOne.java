@@ -9,7 +9,6 @@ public class LevelOne extends World
     public int TargetBurgers = 0;
     public int TargetFries = 0;
     public int TargetDrink = 0;
-
     public Clipboard clipboard;  
 
     // Expected order (burgers, fries, drinks)
@@ -85,6 +84,11 @@ public class LevelOne extends World
 
             if (correct){
                 System.out.println("Order Is Good!");
+                Customer c = getObjects(Customer.class).get(0);
+                for(int i=0; i< 350; i++){
+                    c.setLocation(c.getX() + 1, c.getY());
+                    Greenfoot.delay(1);
+                }
             }else{
                 System.out.println("Order Is WRONG!");
         }
