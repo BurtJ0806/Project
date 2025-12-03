@@ -5,11 +5,19 @@ public class LevelOne extends World
     public ProgressBar progress;
     private CustomerDialogue1 tutorialBox;
     private boolean customerHasSpawned = false;
+
     public int TargetBurgers = 0;
     public int TargetFries = 0;
     public int TargetDrink = 0;
-    public Clipboard clipboard; // world-level clipboard variable
-    private int[] targetOrder = { 1, 2, 1 }; // example target: 1 burger, 2 fries, 1 drink
+
+    public Clipboard clipboard;  
+
+    // Expected order (burgers, fries, drinks)
+    private int[] targetOrder = { 1, 0, 0 };
+
+    // Stores the last correctness state to avoid spam printing
+    private boolean correct = false;  
+    private boolean lastCorrectState = false;
 
     public LevelOne()
     {
@@ -20,7 +28,6 @@ public class LevelOne extends World
         addObject(new Cashier(), 400, 200);
         addObject(progress, getWidth()/2, getHeight() - 20);
 
-        // Assign to the world variable (not a local one!)
         clipboard = new Clipboard();
         addObject(clipboard, -250, 200);
 
@@ -35,7 +42,9 @@ public class LevelOne extends World
         };
 
         tutorialBox = new CustomerDialogue1(tutorialLines);
-        addObject(tutorialBox, getWidth()/2, 100); // moved higher
+        addObject(tutorialBox, getWidth()/2, 100);
+
+
     }
 
     public void act()
@@ -47,25 +56,37 @@ public class LevelOne extends World
             customerHasSpawned = true;
         }
 
-        // Make sure clipboard exists before using it
-        if (clipboard != null) {
-            int[] orders = clipboard.getOrder();
-            System.out.println("Burger: " + orders[0] + ", Fries: " + orders[1] + ", Drink: " + orders[2]);
+        handleOrderChecking();
+    }
 
-            // Compare to target order
-            boolean correct = true;
-            for (int i = 0; i < orders.length; i++) {
-                if (orders[i] != targetOrder[i]) {
-                    correct = false;
-                    break;
-                }
-            }
 
-            if (correct) {
-                System.out.println("Order matches the target! ✅");
-            } else {
-                System.out.println("Order does NOT match the target. ❌");
+    private void handleOrderChecking()
+    {
+        if (clipboard == null) return;
+
+        int[] orders = clipboard.getOrder();
+        if (orders == null || orders.length != targetOrder.length) return;
+
+        correct = true;
+
+        for (int i = 0; i < orders.length; i++)
+        {
+            if (orders[i] != targetOrder[i])
+            {
+                correct = false;
+                break;
             }
+        }
+
+        // Only print when the state changes
+        if (correct != lastCorrectState)
+        {
+            lastCorrectState = correct;
+
+            if (correct)
+                System.out.println("Order Is Good!");
+            else
+                System.out.println("Order Is WRONG!");
         }
     }
 

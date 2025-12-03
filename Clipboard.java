@@ -20,7 +20,7 @@ public class Clipboard extends Actor
     public int Drink = 0;
 
     private String[] options = {"Big Burger", "Big Fries", "Big Drink"};  // Options to display
-    private int selectedOption = -1; // -1 = none selected
+    private int selectedOption = -1; 
     
 
 
@@ -60,7 +60,7 @@ public class Clipboard extends Actor
             updateImage();
         }
 
-        // Check if the user clicks on an option
+        
         checkClicks();
     }
 
@@ -135,22 +135,18 @@ public class Clipboard extends Actor
 
         switch (option) {
             case "Big Burger":
-                System.out.println("Order: Big Burger selected!");
                 Burger = Burger + 1;
                 break;
 
             case "Big Fries":
-                System.out.println("Order: Big Fries selected!");
                 Fries = Fries + 1;
                 break;
 
             case "Big Drink":
-                System.out.println("Order: Big Drink selected!");
                 Drink = Drink + 1;
                 break;
 
             default:
-                System.out.println("Unknown selection.");
                 break;
         }
     }
