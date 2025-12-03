@@ -5,7 +5,6 @@ public class Customer extends Actor
     private int waitingX;       // The X-coordinate where the customer will stop
     private int slideSpeed = 2; // How many pixels to move per act cycle
     
-    
     private String state = "SLIDING_IN"; // "SLIDING_IN", "WAITING", "SLIDING_OUT"
 
     /**
@@ -62,10 +61,6 @@ public class Customer extends Actor
      * Called when the state is "SLIDING_IN".
      * Moves the customer to the right until it hits the 'waitingX' position.
      */
-    /**
-     * Called when the state is "SLIDING_IN".
-     * Moves the customer to the right until it hits the 'waitingX' position.
-     */
     private void slideIn()
     {
         if (getX() < waitingX)
@@ -79,14 +74,12 @@ public class Customer extends Actor
             setLocation(waitingX, getY());
             state = "WAITING";
             
-            
             // 1. Define the text for the bubble
             String[] bubbleText = { "Yo, yo, yo! Big burger. No fries, please." };
 
             // 2. Create a new dialogue object for the bubble
             CustomerDialogue1 speechBubble = new CustomerDialogue1(bubbleText);
 
- 
             int bubbleX = getX() + 40; // To the right
             int bubbleY = getY() - 120; // "Above" the customer's head
 
@@ -101,7 +94,6 @@ public class Customer extends Actor
      */
     private void slideOut()
     {
-        
         int endX = getWorld().getWidth() + 100; // 100 pixels off-screen
         
         if (getX() < endX)
@@ -110,10 +102,10 @@ public class Customer extends Actor
             setLocation(getX() + slideSpeed, getY());
         }
         else
-     
+        {
             getWorld().removeObject(this);
         }
-    
+    }
     
     /**
      * This is a public method that other objects (like the World)
@@ -123,6 +115,13 @@ public class Customer extends Actor
     {
         state = "SLIDING_OUT";
     }
-}  
 
-
+    /**
+     * Shrinks the customer down to a single pixel.
+     */
+    public void shrinkToOnePixel() {
+        GreenfootImage img = getImage();
+        img.scale(1, 1); // Scale to 1x1 pixels
+        setImage(img);
+    }
+}

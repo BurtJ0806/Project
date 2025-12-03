@@ -85,9 +85,12 @@ public class LevelOne extends World
             if (correct){
                 System.out.println("Order Is Good!");
                 Customer c = getObjects(Customer.class).get(0);
-                for(int i=0; i< 350; i++){
+                for(int i=0; i< 351; i++){
                     c.setLocation(c.getX() + 1, c.getY());
                     Greenfoot.delay(1);
+                    if(i==350){
+                        c.shrinkToOnePixel();
+                    }
                 }
             }else{
                 System.out.println("Order Is WRONG!");

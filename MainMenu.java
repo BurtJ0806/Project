@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MainMenu extends World
 {
-
+    private GreenfootSound mainMusic;
     /**
      * Constructor for objects of class MainMenu.
      * 
@@ -16,13 +16,12 @@ public class MainMenu extends World
     public MainMenu()
     {    
         super(600, 400, 1); 
+        mainMusic = new GreenfootSound("MainMusic.mp3");
+        mainMusic.playLoop();
         addObject(new MenuBackground(), 300, 200);
         addObject(new Title(), 300, 100);
         addObject(new StartButton(), 300, 200);
         addObject(new TutorialButton(), 300, 270);
         addObject(new ClockOut(), 300, 340);
-        GreenfootSound mainMusic = new GreenfootSound("MainMusic.wav");
-        mainMusic.play();
-        mainMusic.playLoop();
     }
 }
