@@ -83,11 +83,12 @@ public class LevelOne extends World
         {
             lastCorrectState = correct;
 
-            if (correct)
+            if (correct){
                 System.out.println("Order Is Good!");
-            else
+            }else{
                 System.out.println("Order Is WRONG!");
         }
+    }
     }
 
     private void spawnCustomer()
