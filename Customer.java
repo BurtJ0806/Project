@@ -55,6 +55,7 @@ public class Customer extends Actor
         else if (state.equals("SLIDING_OUT"))
         {
             slideOut();
+            shrinkToOnePixel();
         }
     }    
     
@@ -99,10 +100,10 @@ public class Customer extends Actor
      * Called when the state is "SLIDING_OUT".
      * Moves the customer to the right until it's off the screen.
      */
-    private void slideOut()
+private void slideOut()
     {
-        
-        int endX = getWorld().getWidth() + 100; // 100 pixels off-screen
+        // Change +100 to +200 to give the customer more room to exit.
+        int endX = getWorld().getWidth() + 400; // Increased boundary
         
         if (getX() < endX)
         {
@@ -110,11 +111,11 @@ public class Customer extends Actor
             setLocation(getX() + slideSpeed, getY());
         }
         else
-     
-            getWorld().removeObject(this);
+        {
+            // If the customer is fully off-screen, remove it from the world.
+            getWorld().removeObject(this); 
         }
-    
-    
+    }    
     /**
      * This is a public method that other objects (like the World)
      * can call to tell the customer to leave.
@@ -122,6 +123,13 @@ public class Customer extends Actor
     public void leave()
     {
         state = "SLIDING_OUT";
+        
+    }
+    
+    public void shrinkToOnePixel() {
+        GreenfootImage img = getImage();
+        img.scale(1, 1); // Scale to 1x1 pixels
+        setImage(img);
     }
 }  
 

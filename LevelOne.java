@@ -77,24 +77,27 @@ public class LevelOne extends World
             }
         }
 
-        // Only print when the state changes
+        // Only act when the correctness state changes
         if (correct != lastCorrectState)
         {
             lastCorrectState = correct;
 
             if (correct){
-                System.out.println("Order Is Good!");
-                Customer c = getObjects(Customer.class).get(0);
-                for(int i=0; i< 350; i++){
-                    c.setLocation(c.getX() + 1, c.getY());
-                    Greenfoot.delay(1);
-                }
+                System.out.println("Order Is Good! Customer Leaving.");
+                
+                // ⬇️ THIS IS THE FIX ⬇️
+                // 1. Get the current customer object
+                //    (We assume there is only one Customer in the world right now)
+                Customer currentCustomer = getObjects(Customer.class).get(0);
+                
+                // 2. Tell the customer to start their 'leave' sequence
+                currentCustomer.leave();
+                
             }else{
                 System.out.println("Order Is WRONG!");
+            }
         }
     }
-    }
-
     private void spawnCustomer()
     {
         int customerWaitX = getWidth() / 2;
