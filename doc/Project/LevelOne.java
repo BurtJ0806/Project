@@ -54,7 +54,6 @@ public class LevelOne extends World
         {
             spawnCustomer();
             customerHasSpawned = true;
-            
         }
 
         handleOrderChecking();
