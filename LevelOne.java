@@ -18,6 +18,7 @@ public class LevelOne extends World
         setBackground("JobBackground.png");
 
         progress = new ProgressBar(400, 20, 100);
+        addObject(new Cashier(), 400, 200);
         addObject(progress, getWidth()/2, getHeight() - 20);
         addObject(new Clipboard(), -250, 200);
         
