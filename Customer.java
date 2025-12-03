@@ -21,7 +21,7 @@ public class Customer extends Actor
         // 1. Manually load your image
         GreenfootImage img = new GreenfootImage("Customer.png");
         
-        int newWidth = 80;
+        int newWidth = 200;
         
         // 3. Automatically calculate the height to keep the shape
         int originalWidth = img.getWidth();
@@ -89,7 +89,7 @@ public class Customer extends Actor
             // 3. Calculate position: above and to the right of the customer
             //    (getX(), getY()) is the customer's center.
             int bubbleX = getX() + 40; // To the right
-            int bubbleY = getY() - 60; // "Above" the customer's head
+            int bubbleY = getY() - 120; // "Above" the customer's head
 
             // 4. Add the bubble to the world
             getWorld().addObject(speechBubble, bubbleX, bubbleY);
