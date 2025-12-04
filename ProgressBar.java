@@ -27,6 +27,10 @@ public class ProgressBar extends Actor
         updateImage();
     }
 
+    public int getValue(){
+        return currentValue;
+    }
+    
     private void updateImage() {
         GreenfootImage img = new GreenfootImage(width, height);
 
@@ -40,6 +44,8 @@ public class ProgressBar extends Actor
         setImage(img);
     }
     
+    
+    /**
     public void act() {
     if (Greenfoot.isKeyDown("w")) {
         addValue(1);     // gain 10
@@ -48,4 +54,5 @@ public class ProgressBar extends Actor
         addValue(-1);    // lose 10
     }
     }
+    */
 }
