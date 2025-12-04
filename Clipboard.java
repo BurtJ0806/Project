@@ -19,12 +19,9 @@ public class Clipboard extends Actor
     public int Fries = 0;
     public int Drink = 0;
 
-    private String[] options = {"Big Burger", "Big Fries", "Big Drink"};  // Options to display
-    private int selectedOption = -1; 
+    private String[] options = {"Big Burger", "Big Fries", "Big Drink"};
+    private int selectedOption = -1;
     
-
-
-
     public Clipboard() {
         originalImage = new GreenfootImage("Clipboard.png");
         currentWidth = 1;
@@ -60,7 +57,6 @@ public class Clipboard extends Actor
             updateImage();
         }
 
-        
         checkClicks();
     }
 
@@ -87,18 +83,17 @@ public class Clipboard extends Actor
         GreenfootImage image = new GreenfootImage(originalImage);
         image.scale(currentWidth, newHeight);
 
-        // --- DRAW OPTIONS ---
         image.setFont(new Font("Arial", true, false, 18)); 
 
-        int y = 80; // Starting Y-coordinate
+        int y = 80;
         for (int i = 0; i < options.length; i++) {
             if (i == selectedOption) {
-                image.setColor(Color.RED); // Highlight selected option
+                image.setColor(Color.RED);
             } else {
                 image.setColor(Color.BLACK);
             }
-            image.drawString(options[i], 60, y); // X = 60
-            y += 30; // Space between options
+            image.drawString(options[i], 60, y);
+            y += 30;
         }
 
         setImage(image);
@@ -107,11 +102,11 @@ public class Clipboard extends Actor
     private void checkClicks() {
         if (Greenfoot.mouseClicked(this)) {
             MouseInfo mouse = Greenfoot.getMouseInfo();
-            if (mouse == null) return; // Safety check
+            if (mouse == null) return;
 
             int relativeY = mouse.getY() - (getY() - getImage().getHeight() / 2);
 
-            int yStart = 80; // Same as updateImage()
+            int yStart = 80;
             int optionHeight = 30;
 
             for (int i = 0; i < options.length; i++) {
@@ -120,14 +115,13 @@ public class Clipboard extends Actor
 
                 if (relativeY >= optionTop && relativeY <= optionBottom) {
                     selectedOption = i;
-                    handleSelection(); // <-- CALL SWITCH METHOD HERE
+                    handleSelection();
                 }
             }
             updateImage();
         }
     }
 
-    // --- SWITCH HANDLER FOR OPTIONS ---
     private void handleSelection() {
         String option = getSelectedOptionText();
         if (option == null) return;
@@ -136,37 +130,32 @@ public class Clipboard extends Actor
             case "Big Burger":
                 Burger++;
                 break;
-
             case "Big Fries":
                 Fries++;
                 break;
-
             case "Big Drink":
                 Drink++;
                 break;
-
             default:
                 break;
         }
     }
 
-    // Change the displayed options
     public void setTextOptions(String[] newOptions) {
         options = newOptions;
         updateImage();
     }
 
-    // Get the index of the selected option
     public int getSelectedOption() {
         return selectedOption;
     }
 
-    // Get the text of the selected option
     public String getSelectedOptionText() {
         if (selectedOption >= 0 && selectedOption < options.length)
             return options[selectedOption];
         return null;
     }
+
     public int[] getOrder() {
         return new int[] { Burger, Fries, Drink };
     }
@@ -175,7 +164,7 @@ public class Clipboard extends Actor
         Burger = 0;
         Fries = 0;
         Drink = 0;
-        selectedOption = -1; // optional, reset selection highlight
-        updateImage();        // redraw the clipboard to show reset
+        selectedOption = -1;
+        updateImage();
     }
 }
