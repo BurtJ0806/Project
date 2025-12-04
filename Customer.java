@@ -2,12 +2,11 @@ import greenfoot.*;
 
 public class Customer extends Actor
 {
-    private int waitingX;       // The X-coordinate where the customer will stop
-    private int slideSpeed = 2; // How many pixels to move per act cycle
+    private int waitingX;       
+    private int slideSpeed = 2; 
+    String[] person = { "Customer.png", "Customer2.png", "Customer3.png", "Customer4.png","Customer5.png","Customer6.png","Customer7.png","Customer8.png","Customer9.png","Customer10.png" };
     
-    
-    private String state = "SLIDING_IN"; // "SLIDING_IN", "WAITING", "SLIDING_OUT"
-
+    private String state = "SLIDING_IN"; 
     /**
      * Constructor for a new Customer.
      * 'waitingX' is the X-position where they will stop.
@@ -16,19 +15,20 @@ public class Customer extends Actor
     {
         this.waitingX = waitingX;
         
-        // --- This code loads and scales your image ---
         
-        // 1. Manually load your image
-        GreenfootImage img = new GreenfootImage("Customer.png");
+        
+        int randomIndex = Greenfoot.getRandomNumber(person.length);
+        String randomChoice = person[randomIndex];
+        GreenfootImage img = new GreenfootImage(randomChoice);
         
         int newWidth = 200;
         
-        // 3. Automatically calculate the height to keep the shape
+      
         int originalWidth = img.getWidth();
         int originalHeight = img.getHeight();
         int newHeight = (int)((double)originalHeight / originalWidth * newWidth);
         
-        // 4. Scale the image to the new, smaller size
+ 
         img.scale(newWidth, newHeight); 
         
         setImage(img); 
@@ -46,10 +46,9 @@ public class Customer extends Actor
         }
         else if (state.equals("WAITING"))
         {
-            // When waiting, check if the user clicks on us
             if (Greenfoot.mouseClicked(this))
             {
-                leave(); // If clicked, start leaving
+                leave(); 
             }
         }
         else if (state.equals("SLIDING_OUT"))
@@ -71,27 +70,17 @@ public class Customer extends Actor
     {
         if (getX() < waitingX)
         {
-            // Keep moving right
             setLocation(getX() + slideSpeed, getY());
         }
         else
         {
-            // We've arrived. Stop at the exact spot and change state.
+            
             setLocation(waitingX, getY());
             state = "WAITING";
-            
-            
-            // 1. Define the text for the bubble
             String[] bubbleText = { "Yo, yo, yo! Big burger. No fries, please." };
-
-            // 2. Create a new dialogue object for the bubble
             CustomerDialogue1 speechBubble = new CustomerDialogue1(bubbleText);
-
- 
-            int bubbleX = getX() + 40; // To the right
-            int bubbleY = getY() - 120; // "Above" the customer's head
-
-            // 4. Add the bubble to the world
+            int bubbleX = getX() + 40; 
+            int bubbleY = getY() - 120; 
             getWorld().addObject(speechBubble, bubbleX, bubbleY);
         }
     }
@@ -102,17 +91,15 @@ public class Customer extends Actor
      */
     private void slideOut()
     {
-        // Change +100 to +200 to give the customer more room to exit.
-        int endX = getWorld().getWidth() + 400; // Increased boundary
+        
+        int endX = getWorld().getWidth() + 400; 
         
         if (getX() < endX)
         {
-            // Keep moving right
             setLocation(getX() + slideSpeed, getY());
         }
         else
         {
-            // If the customer is fully off-screen, remove it from the world.
             getWorld().removeObject(this);
         }
     }    
@@ -128,7 +115,7 @@ public class Customer extends Actor
     
     public void shrinkToOnePixel() {
         GreenfootImage img = getImage();
-        img.scale(1, 1); // Scale to 1x1 pixels
+        img.scale(1, 1); 
         setImage(img);
     }
 }  
