@@ -100,7 +100,7 @@ public class Customer extends Actor
      * Called when the state is "SLIDING_OUT".
      * Moves the customer to the right until it's off the screen.
      */
-private void slideOut()
+    private void slideOut()
     {
         // Change +100 to +200 to give the customer more room to exit.
         int endX = getWorld().getWidth() + 400; // Increased boundary
@@ -124,12 +124,6 @@ private void slideOut()
     {
         state = "SLIDING_OUT";
         
-    }
-    
-    public void shrinkToOnePixel() {
-        GreenfootImage img = getImage();
-        img.scale(1, 1); // Scale to 1x1 pixels
-        setImage(img);
     }
     
     public void shrinkToOnePixel() {
