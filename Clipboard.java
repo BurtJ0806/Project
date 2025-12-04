@@ -135,15 +135,15 @@ public class Clipboard extends Actor
 
         switch (option) {
             case "Big Burger":
-                Burger = Burger + 1;
+                Burger++;
                 break;
 
             case "Big Fries":
-                Fries = Fries + 1;
+                Fries++;
                 break;
 
             case "Big Drink":
-                Drink = Drink + 1;
+                Drink++;
                 break;
 
             default:
@@ -172,4 +172,11 @@ public class Clipboard extends Actor
         return new int[] { Burger, Fries, Drink };
     }
 
+    public void resetOrder(){
+        Burger = 0;
+        Fries = 0;
+        Drink = 0;
+        selectedOption = -1; // optional, reset selection highlight
+        updateImage();        // redraw the clipboard to show reset
+    }
 }

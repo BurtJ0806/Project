@@ -113,7 +113,7 @@ private void slideOut()
         else
         {
             // If the customer is fully off-screen, remove it from the world.
-            getWorld().removeObject(this); 
+            getWorld().removeObject(this);
         }
     }    
     /**
@@ -131,6 +131,16 @@ private void slideOut()
         img.scale(1, 1); // Scale to 1x1 pixels
         setImage(img);
     }
+    
+    public void shrinkToOnePixel() {
+        GreenfootImage img = getImage();
+        img.scale(1, 1); // Scale to 1x1 pixels
+        setImage(img);
+    }
 }  
+
+
+
+
 
 
