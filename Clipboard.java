@@ -120,7 +120,6 @@ public class Clipboard extends Actor
 
                 if (relativeY >= optionTop && relativeY <= optionBottom) {
                     selectedOption = i;
-                    System.out.println("Clicked: " + options[i]);
                     handleSelection(); // <-- CALL SWITCH METHOD HERE
                 }
             }

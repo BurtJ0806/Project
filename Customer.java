@@ -4,7 +4,7 @@ public class Customer extends Actor
 {
     private int waitingX;       // The X-coordinate where the customer will stop
     private int slideSpeed = 2; // How many pixels to move per act cycle
-    
+    String[] person = { "Customer.png", "Customer2.png", "Customer3.png", "Customer4.png" };
     
     private String state = "SLIDING_IN"; // "SLIDING_IN", "WAITING", "SLIDING_OUT"
 
@@ -18,8 +18,9 @@ public class Customer extends Actor
         
         // --- This code loads and scales your image ---
         
-        // 1. Manually load your image
-        GreenfootImage img = new GreenfootImage("Customer.png");
+        int randomIndex = Greenfoot.getRandomNumber(person.length);
+        String randomChoice = person[randomIndex];
+        GreenfootImage img = new GreenfootImage(person);
         
         int newWidth = 200;
         
